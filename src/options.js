@@ -57,31 +57,31 @@ export function strictOption() {
         strict: true
     };
 
-    return exports.mergeOptions([
-        exports.en(strictConfig),
-        exports.de(strictConfig),
-        exports.nl(strictConfig),
-        exports.pt(strictConfig),
-        exports.es(strictConfig),
-        exports.fr(strictConfig),
-        exports.ja(strictConfig),
-        exports.zh,
-        exports.commonPostProcessing
+    return mergeOptions([
+        en(strictConfig),
+        de(strictConfig),
+        nl(strictConfig),
+        pt(strictConfig),
+        es(strictConfig),
+        fr(strictConfig),
+        ja(strictConfig),
+        zh,
+        commonPostProcessing
     ]);
 }
 
 export function casualOption() {
-    return exports.mergeOptions([
-        exports.en.casual,
+    return mergeOptions([
+        en.casual,
         // Some German abbriviate overlap with common English
-        exports.de({ strict: true }),
-        exports.nl,
-        exports.pt,
-        exports.es,
-        exports.fr,
-        exports.ja,
-        exports.zh,
-        exports.commonPostProcessing
+        de({ strict: true }),
+        nl,
+        pt,
+        es,
+        fr,
+        ja,
+        zh,
+        commonPostProcessing
     ]);
 }
 
@@ -107,7 +107,7 @@ export const de = function(config) {
 };
 
 de.casual = function() {
-    var option = exports.de({
+    var option = de({
         strict: false
     });
     option.parsers.unshift(new parser.DECasualDateParser());
@@ -137,7 +137,7 @@ export const nl = function(config) {
 };
 
 nl.casual = function() {
-    var option = exports.nl({
+    var option = nl({
         strict: false
     });
     option.parsers.unshift(new parser.NLCasualDateParser());
@@ -181,7 +181,7 @@ export const en = function(config) {
 en.casual = function(config) {
     config = config || {};
     config.strict = false;
-    var option = exports.en(config);
+    var option = en(config);
 
     // en
     option.parsers.unshift(new parser.ENCasualDateParser());
@@ -195,13 +195,13 @@ en.casual = function(config) {
 export const en_GB = function(config) {
     config = config || {};
     config.littleEndian = true;
-    return exports.en(config);
+    return en(config);
 };
 
 en_GB.casual = function(config) {
     config = config || {};
     config.littleEndian = true;
-    return exports.en.casual(config);
+    return en.casual(config);
 };
 
 // -------------------------------------------------------------
@@ -220,7 +220,7 @@ export const ja = function() {
 };
 
 ja.casual = function() {
-    var option = exports.ja();
+    var option = ja();
     option.parsers.unshift(new parser.JPCasualDateParser());
     return option;
 };
@@ -245,7 +245,7 @@ export const pt = function(config) {
 };
 
 pt.casual = function() {
-    var option = exports.pt({
+    var option = pt({
         strict: false
     });
 
@@ -274,7 +274,7 @@ export const es = function(config) {
 };
 
 es.casual = function() {
-    var option = exports.es({
+    var option = es({
         strict: false
     });
 
@@ -305,7 +305,7 @@ export const fr = function(config) {
 };
 
 fr.casual = function() {
-    var option = exports.fr({
+    var option = fr({
         strict: false
     });
 

@@ -8817,13 +8817,13 @@ function strictOption() {
   var strictConfig = {
     strict: true
   };
-  return exports.mergeOptions([exports.en(strictConfig), exports.de(strictConfig), exports.nl(strictConfig), exports.pt(strictConfig), exports.es(strictConfig), exports.fr(strictConfig), exports.ja(strictConfig), exports.zh, exports.commonPostProcessing]);
+  return mergeOptions([options_en(strictConfig), options_de(strictConfig), options_nl(strictConfig), options_pt(strictConfig), options_es(strictConfig), options_fr(strictConfig), options_ja(strictConfig), options_zh, commonPostProcessing]);
 }
 function casualOption() {
-  return exports.mergeOptions([exports.en.casual, // Some German abbriviate overlap with common English
-  exports.de({
+  return mergeOptions([options_en.casual, // Some German abbriviate overlap with common English
+  options_de({
     strict: true
-  }), exports.nl, exports.pt, exports.es, exports.fr, exports.ja, exports.zh, exports.commonPostProcessing]);
+  }), options_nl, options_pt, options_es, options_fr, options_ja, options_zh, commonPostProcessing]);
 } // -------------------------------------------------------------
 
 var options_de = function de(config) {
@@ -8834,7 +8834,7 @@ var options_de = function de(config) {
 };
 
 options_de.casual = function () {
-  var option = exports.de({
+  var option = options_de({
     strict: false
   });
   option.parsers.unshift(new parser["DECasualDateParser"]());
@@ -8851,7 +8851,7 @@ var options_nl = function nl(config) {
 };
 
 options_nl.casual = function () {
-  var option = exports.nl({
+  var option = options_nl({
     strict: false
   });
   option.parsers.unshift(new parser["NLCasualDateParser"]());
@@ -8872,7 +8872,7 @@ var options_en = function en(config) {
 options_en.casual = function (config) {
   config = config || {};
   config.strict = false;
-  var option = exports.en(config); // en
+  var option = options_en(config); // en
 
   option.parsers.unshift(new parser["ENCasualDateParser"]());
   option.parsers.unshift(new parser["ENCasualTimeParser"]());
@@ -8884,13 +8884,13 @@ options_en.casual = function (config) {
 var en_GB = function en_GB(config) {
   config = config || {};
   config.littleEndian = true;
-  return exports.en(config);
+  return options_en(config);
 };
 
 en_GB.casual = function (config) {
   config = config || {};
   config.littleEndian = true;
-  return exports.en.casual(config);
+  return options_en.casual(config);
 }; // -------------------------------------------------------------
 
 
@@ -8902,7 +8902,7 @@ var options_ja = function ja() {
 };
 
 options_ja.casual = function () {
-  var option = exports.ja();
+  var option = options_ja();
   option.parsers.unshift(new parser["JPCasualDateParser"]());
   return option;
 }; // -------------------------------------------------------------
@@ -8916,7 +8916,7 @@ var options_pt = function pt(config) {
 };
 
 options_pt.casual = function () {
-  var option = exports.pt({
+  var option = options_pt({
     strict: false
   });
   option.parsers.unshift(new parser["PTCasualDateParser"]());
@@ -8933,7 +8933,7 @@ var options_es = function es(config) {
 };
 
 options_es.casual = function () {
-  var option = exports.es({
+  var option = options_es({
     strict: false
   });
   option.parsers.unshift(new parser["ESCasualDateParser"]());
@@ -8950,7 +8950,7 @@ var options_fr = function fr(config) {
 };
 
 options_fr.casual = function () {
-  var option = exports.fr({
+  var option = options_fr({
     strict: false
   });
   option.parsers.unshift(new parser["FRCasualDateParser"]());
